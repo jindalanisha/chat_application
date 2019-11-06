@@ -85,9 +85,10 @@ if(isset($_POST['submit']))
 {
     $email=htmlentities(mysqli_real_escape_string($con,$_POST['email']));
     $recovery_account=htmlentities(mysqli_real_escape_string($con,$_POST['bf']));
-    $select_user="select * from users where user_email='$email' AND forgotten_answer='$recovery_account';";
+    $select_user="select * from users where user_email='$email' AND forgotten_pass='$recovery_account';";
     $query=mysqli_query($con,$select_user);
     $check_user=mysqli_num_rows($query);
+    echo"<script>alert('$check_user')</script>";
     if($check_user==1)
     {
         $_SESSION['user_email']=$email;

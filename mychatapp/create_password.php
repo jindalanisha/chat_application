@@ -51,7 +51,7 @@
 
    <br><br><br><br><br><br><br><br>
 		  <div class="signin">
-				  <form action="signin.php" method="POST">
+				  <form action="" method="POST">
 						  <div class="header">
 						  	 <center><h1>Create new password</h1></center>
 						  </div>
@@ -77,7 +77,7 @@
           <?php
           session_start();
           include("connection.php");
-          if(isset($_POST['submitchange']))
+          if(isset($_POST['change']))
           {
               $user=$_SESSION['user_email'];
                 $pass1=$_POST['password1'];
@@ -90,7 +90,7 @@
                     <div>
                     ";
                 }
-                if($pass1<9  NAD $pass2<9){
+                if($pass1<9  AND $pass2<9){
                     echo"
                     <div class='alert alert-danger>
                     <strong>Use 9 or more then 9 characters</strong>
@@ -99,7 +99,7 @@
                 }
                 if($pass1==$pass2)
                 {
-                    $update_pass=mysqli_query($con,"UPDATE users ste user_pass='$pass1' where user_email='$user'");
+                    $update_pass=mysqli_query($con,"UPDATE users set user_pass='$pass1' where user_email='$user'");
                     session_destroy();
                     echo"<script>alert('Go ahead and signin')</script>";
                     echo"<script>window.open('signin.html','_self')</script>";
